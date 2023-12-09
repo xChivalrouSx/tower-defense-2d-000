@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    private float speed = 5f;
+    private readonly float speed = 2f;
 
     private Transform target;
     private int wavePathIndex = 0;

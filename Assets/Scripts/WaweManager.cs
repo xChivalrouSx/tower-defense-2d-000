@@ -13,6 +13,7 @@ public class WaweManager : MonoBehaviour
     private float countdownBetweenWaves;
 
     private int waveIndex = 0;
+    private int numberOfEnemy = 0;
 
     private void Start()
     {
@@ -30,7 +31,7 @@ public class WaweManager : MonoBehaviour
         }
         countdownBetweenWaves -= Time.deltaTime;
 
-        countDownText.text = countdownBetweenWaves.ToString("##"); // Mathf.Floor(countdown).ToString();
+        countDownText.text = countdownBetweenWaves.ToString("##");
     }
 
     private IEnumerator SpawnWawe()
@@ -47,7 +48,8 @@ public class WaweManager : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
+        Transform newEnemy = Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
+        newEnemy.name = (++numberOfEnemy).ToString();
     }
 
 }
