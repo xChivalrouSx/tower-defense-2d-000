@@ -33,4 +33,9 @@ public class Enemy : MonoBehaviour
 
         target = PathManager.PathPoints[++wavePathIndex];
     }
+
+    public void DestroySelf()
+    {
+        Destroy(gameObject);
+    }
 }

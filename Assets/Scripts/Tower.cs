@@ -14,10 +14,15 @@ public class Tower : MonoBehaviour
         }
     }
 
-    [SerializeField] Transform rotationPart;
+    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private Transform rotationPart;
+    [SerializeField] private Transform firePoint;
 
-    private List<Transform> enemyList;
+    [SerializeField] private float bulletPerSecond = 1f;
+
     private Transform target;
+    private float timeUntilFire;
+    private List<Transform> enemyList;
 
     private void Awake()
     {
@@ -35,17 +40,28 @@ public class Tower : MonoBehaviour
         target = enemyList[0];
         float angle = Mathf.Atan2(target.position.y - rotationPart.position.y, target.position.x - rotationPart.position.x) * Mathf.Rad2Deg;
         Quaternion targetRotation = Quaternion.Euler(new Vector3(0f, 0f, angle + 180));
-
-        //rotationPart.rotation = targetRotation;
-
         rotationPart.rotation = Quaternion.RotateTowards(rotationPart.rotation, targetRotation, 300f * Time.deltaTime);
+
+        timeUntilFire += Time.deltaTime;
+        if (timeUntilFire >= 1f / bulletPerSecond)
+        {
+            Fire();
+            timeUntilFire = 0f;
+        }
+
+    }
+
+    private void Fire()
+    {
+        GameObject bulletObj = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
+        Bullet bullet = bulletObj.GetComponent<Bullet>();
+        bullet.SetTarget(target);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag.Equals("Enemy"))
         {
-            Debug.Log("added");
             enemyList.Add(collision.transform);
             enemyList.Sort(new CustomTransformComparerWithIntName());
         }
@@ -55,7 +71,6 @@ public class Tower : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Enemy"))
         {
-            Debug.Log("removed");
             enemyList.Remove(collision.transform);
         }
     }
