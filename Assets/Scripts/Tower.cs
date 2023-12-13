@@ -48,7 +48,6 @@ public class Tower : MonoBehaviour
             Fire();
             timeUntilFire = 0f;
         }
-
     }
 
     private void Fire()

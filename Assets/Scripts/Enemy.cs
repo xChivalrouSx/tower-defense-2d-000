@@ -1,14 +1,22 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
+    [SerializeField] private Image healthBar;
+
     private readonly float speed = 2f;
+    private float totalHealth = 100f;
+    private float health;
 
     private Transform target;
     private int wavePathIndex = 0;
 
     private void Start()
     {
+        health = totalHealth;
+        UpdateHealthBar();
+
         target = PathManager.PathPoints[wavePathIndex];
     }
 
@@ -34,7 +42,22 @@ public class Enemy : MonoBehaviour
         target = PathManager.PathPoints[++wavePathIndex];
     }
 
-    public void DestroySelf()
+    public void TakeDamage(float demage)
+    {
+        health = Mathf.Max(0, health - demage);
+        UpdateHealthBar();
+        if (health <= 0)
+        {
+            DestroySelf();
+        }
+    }
+
+    private void UpdateHealthBar()
+    {
+        healthBar.fillAmount = health / totalHealth;
+    }
+
+    private void DestroySelf()
     {
         Destroy(gameObject);
     }

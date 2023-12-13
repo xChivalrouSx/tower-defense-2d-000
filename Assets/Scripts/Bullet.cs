@@ -3,7 +3,8 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
 
-    [SerializeField] private float bulletSpeed = 3f;
+    private readonly float bulletSpeed = 4f;
+    private readonly float demage = 50f;
 
     private Transform target;
     private Rigidbody2D rigidBody;
@@ -29,7 +30,7 @@ public class Bullet : MonoBehaviour
         if (collision.transform == target)
         {
             Destroy(gameObject);
-            target.GetComponent<Enemy>().DestroySelf();
+            target.GetComponent<Enemy>().TakeDamage(demage);
         }
 
     }
