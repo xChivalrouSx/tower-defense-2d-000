@@ -3,7 +3,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
 
-    private readonly float bulletSpeed = 4f;
+    private readonly float bulletSpeed = 5f;
     private readonly float demage = 50f;
 
     private Transform target;
@@ -18,6 +18,7 @@ public class Bullet : MonoBehaviour
     {
         if (target == null)
         {
+            Destroy(gameObject);
             return;
         }
 

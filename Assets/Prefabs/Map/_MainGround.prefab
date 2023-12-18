@@ -3992,7 +3992,7 @@ PrefabInstance:
     - target: {fileID: 7928082581106173165, guid: 72784818d766ec847bdf349cde8da464, type: 3}
       propertyPath: countDownText
       value: 
-      objectReference: {fileID: 1961859219860070548}
+      objectReference: {fileID: 8818861508563923713}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6912,9 +6912,14 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29cd4041c35190e4f9b65221770293bb, type: 3}
---- !u!114 &1961859219860070548 stripped
+--- !u!4 &3566160820728734660 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5688336407153805424, guid: 29cd4041c35190e4f9b65221770293bb, type: 3}
+  m_PrefabInstance: {fileID: 9190874380419247028}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8818861508563923713 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7256819750292228896, guid: 29cd4041c35190e4f9b65221770293bb, type: 3}
+  m_CorrespondingSourceObject: {fileID: 427393762909608117, guid: 29cd4041c35190e4f9b65221770293bb, type: 3}
   m_PrefabInstance: {fileID: 9190874380419247028}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
@@ -6923,11 +6928,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &3566160820728734660 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5688336407153805424, guid: 29cd4041c35190e4f9b65221770293bb, type: 3}
-  m_PrefabInstance: {fileID: 9190874380419247028}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9196987996555571147
 PrefabInstance:
   m_ObjectHideFlags: 0
