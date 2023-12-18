@@ -4,46 +4,65 @@ using UnityEngine;
 
 public class WaweManager : MonoBehaviour
 {
+    private enum WaweState
+    {
+        WaitForNewWawe,
+        WaweStart
+    }
+
     [SerializeField] private Transform enemyPrefab;
     [SerializeField] private TextMeshProUGUI countDownText;
 
     private Transform spawnPoint;
 
-    private readonly float maxTimeBetweenWaves = 5f;
+    private readonly float waitTimePerEnemy = 5f;
     private float countdownBetweenWaves;
 
-    private int waveIndex = 0;
+    private int waveIndex = 1;
     private int numberOfEnemy = 0;
+
+    private WaweState currentState;
 
     private void Start()
     {
-        spawnPoint = PathManager.PathPoints[0];
-        countdownBetweenWaves = maxTimeBetweenWaves;
+        currentState = WaweState.WaitForNewWawe;
+
+        countdownBetweenWaves = waitTimePerEnemy * waveIndex;
         countDownText.text = countdownBetweenWaves.ToString("##");
+
+        spawnPoint = PathManager.PathPoints[0];
     }
 
     private void Update()
     {
-        if (countdownBetweenWaves <= 0f)
+        switch (currentState)
         {
-            StartCoroutine(SpawnWawe());
-            countdownBetweenWaves = maxTimeBetweenWaves;
+            case WaweState.WaitForNewWawe:
+                if (countdownBetweenWaves <= 0f)
+                {
+                    countDownText.text = string.Empty;
+                    currentState = WaweState.WaweStart;
+                }
+                countdownBetweenWaves -= Time.deltaTime;
+                countDownText.text = countdownBetweenWaves.ToString("##");
+                return;
+            case WaweState.WaweStart:
+                StartCoroutine(SpawnWawe());
+                countdownBetweenWaves = waitTimePerEnemy * waveIndex;
+                currentState = WaweState.WaitForNewWawe;
+                return;
         }
-        countdownBetweenWaves -= Time.deltaTime;
-
-        countDownText.text = countdownBetweenWaves.ToString("##");
     }
 
     private IEnumerator SpawnWawe()
     {
-        waveIndex++;
-
         for (int i = 0; i < waveIndex; i++)
         {
             SpawnEnemy();
             yield return new WaitForSeconds(.5f);
 
         }
+        waveIndex++;
     }
 
     private void SpawnEnemy()
