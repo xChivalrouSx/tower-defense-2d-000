@@ -20,6 +20,9 @@ public class Tower : MonoBehaviour
 
     [SerializeField] private float bulletPerSecond = 1f;
 
+    public float Price { get { return 200f; } private set { } }
+    public bool IsPlaced { get; set; }
+
     private Transform target;
     private float timeUntilFire;
     private List<Transform> enemyList;
@@ -27,6 +30,19 @@ public class Tower : MonoBehaviour
     private void Awake()
     {
         enemyList = new List<Transform>();
+
+        Debug.Log("here");
+
+        if (BudgetManager.Instance.GetMoney() - Price < 0)
+        {
+            IsPlaced = false;
+            Destroy(gameObject);
+        }
+        else
+        {
+            IsPlaced = true;
+            BudgetManager.Instance.SpendMoney(Price);
+        }
     }
 
     private void Update()

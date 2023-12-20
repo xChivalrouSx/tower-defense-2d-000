@@ -5,6 +5,8 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private Image healthBar;
 
+    public float Earning { get; private set; }
+
     private readonly float speed = 2f;
     private float totalHealth = 100f;
     private float health;
@@ -18,6 +20,8 @@ public class Enemy : MonoBehaviour
         UpdateHealthBar();
 
         target = PathManager.PathPoints[wavePathIndex];
+
+        Earning = 50f;
     }
 
     private void Update()
@@ -59,6 +63,7 @@ public class Enemy : MonoBehaviour
 
     private void DestroySelf()
     {
+        BudgetManager.Instance.AddMoney(Earning);
         Destroy(gameObject);
     }
 }

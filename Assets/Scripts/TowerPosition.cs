@@ -21,9 +21,9 @@ public class TowerPosition : MonoBehaviour
             {
                 if (hit.collider.name == name)
                 {
-                    isTowerPlaced = true;
                     Transform newTower = Instantiate(towerPrefab);
                     newTower.position = hit.collider.transform.position;
+                    isTowerPlaced = newTower.GetComponent<Tower>().IsPlaced;
                 }
             }
         }
