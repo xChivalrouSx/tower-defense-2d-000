@@ -3,6 +3,7 @@ using UnityEngine;
 public class TowerPosition : MonoBehaviour
 {
     [SerializeField] private Transform towerPrefab;
+    [SerializeField] private GameObject selectableUI;
 
     private bool isTowerPlaced;
 
@@ -11,9 +12,20 @@ public class TowerPosition : MonoBehaviour
         isTowerPlaced = false;
     }
 
+    private void Start()
+    {
+        BudgetManager.Instance.OnTowerAddCliecked += BudgetManager_OnTowerAddCliecked;
+    }
+
+    private void BudgetManager_OnTowerAddCliecked(object sender, System.EventArgs e)
+    {
+        bool isActive = !isTowerPlaced && BudgetManager.Instance.CanAddTower;
+        selectableUI.SetActive(isActive);
+    }
+
     void Update()
     {
-        if (!isTowerPlaced && Input.GetMouseButtonDown(0))
+        if (selectableUI.activeSelf && Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit2D[] hits = Physics2D.GetRayIntersectionAll(ray, Mathf.Infinity);
