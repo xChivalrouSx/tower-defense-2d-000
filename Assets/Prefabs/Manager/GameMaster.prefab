@@ -65,8 +65,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Tower Price: 200\nClick square for adding tower. \n(If you have enaugh
-    money.)"
+  m_text: 'Tower Price: 200
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -316,6 +317,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 568593477347313754, guid: f7adef8e50402d6429985bcae2730fd1, type: 3}
+  countDownText: {fileID: 0}
 --- !u!114 &8425829208118358715
 MonoBehaviour:
   m_ObjectHideFlags: 0
