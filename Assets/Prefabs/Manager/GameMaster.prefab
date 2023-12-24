@@ -281,6 +281,7 @@ GameObject:
   - component: {fileID: 4392813679713743758}
   - component: {fileID: 7928082581106173165}
   - component: {fileID: 8425829208118358715}
+  - component: {fileID: 8928493665295532022}
   m_Layer: 0
   m_Name: GameMaster
   m_TagString: Untagged
@@ -333,6 +334,19 @@ MonoBehaviour:
   moneyText: {fileID: 7212852511319961700}
   addTowerButton: {fileID: 1910078776527593956}
   addTowerDisableUI: {fileID: 7479831460575620087}
+--- !u!114 &8928493665295532022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3545474612805583828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22de9dbcb79f7d349b62370e5fcaec52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeText: {fileID: 0}
 --- !u!1 &4318370255836020056
 GameObject:
   m_ObjectHideFlags: 0

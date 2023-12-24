@@ -39,6 +39,7 @@ public class Enemy : MonoBehaviour
     {
         if (wavePathIndex >= PathManager.PathPoints.Count - 1)
         {
+            GameManager.Instance.GetDemage();
             Destroy(gameObject);
             return;
         }
