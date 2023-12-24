@@ -14,3 +14,8 @@
   <img src="./app-images/image-02.png" alt="Image - 3" width="300"/> 
   <img src="./app-images/image-03.png" alt="Image - 4" width="300"/>
 </p>
+
+<p float="left">
+  <img src="./app-images/image-04.png" alt="Image - 4" width="300"/> 
+  <img src="./app-images/image-05.png" alt="Image - 5" width="300"/>
+</p>
